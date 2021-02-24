@@ -1,5 +1,5 @@
 # DexRay:
-## To extract the features, use ``XXX`` script:
+## To generate the images, use ``XXX`` script:
 This script generates ...
 
 ### INPUTs are: 
