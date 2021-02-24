@@ -1,13 +1,30 @@
 # DexRay:
-## To generate the images, use ``XXX`` script:
-This script generates ...
+
+## To generate the images, use ``apktoimage.py`` script:
+This script generates an image from the given APK based on the Dalvik bytecode.
 
 ### INPUTs are: 
+    - The APK to convert into image
+    - The path in which the resulting image will be
 ### OUTPUTs are:
+    - A greyscale image representing the Dalvik bytecode
 
 Example: 
 
-``` ```
+```python3 apktoimage.py APK DESTINATION ```
+
+## To generate an obfuscated APK, use ``launch_obfuscation.sh`` script in Obfuscation/ folder:
+This script generates an obfuscated APK from the given APK based on options given in the script.
+
+### INPUTs are: 
+    - The APK to obfuscate
+    - The path in which the resulting APK will be
+### OUTPUTs are:
+    - An obfuscated APK based one the input APK
+
+Example: 
+
+```sh launch_obfuscation.sh PATH_TO_APK PATH_OF_NEW_APK```
 
 ## To train and test the model, use ``DexRay_evaluation.py`` script:
 This script trains the Neural Network using the training images, and evaluates its learning using the test dataset.
