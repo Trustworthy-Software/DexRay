@@ -75,10 +75,10 @@ model_architecture.add(Dense(1, activation='sigmoid'))
 
 
 file_results = open(file_name, "w")
-file_results.write("Scores of the performance evaluation are: Accuracy, Precision, Recall, F1-score")
+file_results.write("Scores of the performance evaluation are: Accuracy, Precision, Recall, F1-score\n")
 for i in range(1, 11):
-    file_results.write("Run: "+str(i))
-    print("Run: "+str(i))
+    file_results.write("Run: %d \n" % i)
+    print("Run: %d" % i)
     with open(os.path.join(PATH_FILES, "train"+str(i)+".txt")) as f:
         train_hashes = f.read().splitlines()
         train_imgs = [os.path.join(path_images, image_hash) for image_hash in train_hashes]
@@ -141,16 +141,15 @@ for i in range(1, 11):
     model.save(path_save_model)
     print("Evaluate the model")
     evaluation_scores = model.evaluate(test_dataset, verbose=2)
-    file_results.write(evaluation_scores +"\n")
+    file_results.write("%s  \n" % evaluation_scores[1:])
     file_results.write("#"*50+"\n")
     accuracy_list.append(evaluation_scores[1])
     precision_list.append(evaluation_scores[2])
     recall_list.append(evaluation_scores[3])
     f1_list.append(evaluation_scores[4])
+file_results.write("Average scores: %f %f %f %f" % (np.mean(accuracy_list), 
+                                                    np.mean(precision_list), 
+                                                    np.mean(recall_list), 
+                                                    np.mean(f1_list)))
 
-file_results.write("Average scores: " + 
-                   str(np.mean(accuracy_list)) + 
-                   str(np.mean(precision_list)) + 
-                   str(np.mean(recall_list)) + 
-                   str(np.mean(f1_list)))    
 file_results.close()
