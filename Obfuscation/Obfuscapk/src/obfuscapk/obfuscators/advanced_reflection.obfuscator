@@ -1,0 +1,7 @@
+[Core]
+Name = AdvancedReflection
+Module = advanced_reflection
+
+[Documentation]
+Description = Apply reflection only to dangerous APIs
+Version = 1.0
