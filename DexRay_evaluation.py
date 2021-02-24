@@ -35,7 +35,7 @@ dir_name = args.dir
 file_name = args.file   
 
 CHANNELS = 1
-EPOCHS = 2
+EPOCHS = 100
 BATCH_SIZE = 500
 IMG_WIDTH = IMG_HEIGHT = 256
 PATH_FILES = "data_splits"
@@ -81,17 +81,17 @@ for i in range(1, 11):
     print("Run: "+str(i))
     with open(os.path.join(PATH_FILES, "train"+str(i)+".txt")) as f:
         train_hashes = f.read().splitlines()
-        train_imgs = [os.path.join(path_images, image_hash) for image_hash in train_hashes][:100]
+        train_imgs = [os.path.join(path_images, image_hash) for image_hash in train_hashes]
     f.close()
     
     with open(os.path.join(PATH_FILES, "valid"+str(i)+".txt")) as f:
         valid_hashes = f.read().splitlines()
-        valid_imgs = [os.path.join(path_images, image_hash) for image_hash in valid_hashes][:20]
+        valid_imgs = [os.path.join(path_images, image_hash) for image_hash in valid_hashes]
     f.close()
     
     with open(os.path.join(PATH_FILES, "test"+str(i)+".txt")) as f:
         test_hashes = f.read().splitlines()
-        test_imgs = [os.path.join(path_images, image_hash) for image_hash in test_hashes][:20]
+        test_imgs = [os.path.join(path_images, image_hash) for image_hash in test_hashes]
     f.close()
     
     train_dataset = tf.data.Dataset.from_tensor_slices(train_imgs)
