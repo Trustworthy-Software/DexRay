@@ -45,6 +45,10 @@ To use this script, you need to extract the images for goodware and malware appl
       and their average scores.
     - The ten trained models
 
+Example: 
+
+```python3 DexRay_evaluation.py -p "dataset_images" -d "results_dir" -f "results_dir/evaluation_scores.txt"```
+
 
 ## To train and test the model on the obfuscated apps, use ``DexRay_evaluation_obfuscation.py`` script:
 This script trains the Neural Network using the training images, and evaluates its learning using the test dataset as described in Section4.2 of the paper.
