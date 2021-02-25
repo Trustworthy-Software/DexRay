@@ -45,7 +45,7 @@ CHANNELS = 1
 EPOCHS = 100
 BATCH_SIZE = 500
 IMG_WIDTH = IMG_HEIGHT = 256
-PATH_FILES = "data_splits/obfuscation_evaluation"
+PATH_FILES = "data_splits/obfuscation"
 
 CLASS_NAMES = ['goodware', 'malware']
 
