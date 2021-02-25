@@ -35,12 +35,14 @@ To use this script, you need to extract the images for goodware and malware appl
 
 ### INPUTs are: 
 
-    - The path to the directory that contains the extracted images. In this directory, you need to have two folders: malware and goodware.
+    - The path to the directory that contains the extracted images. 
+      In this directory, you need to have two folders: malware and goodware.
     - The name of directory where to save your model.
     - The name of the file where to save the evaluation results.
 
 ### OUTPUTs are:
-    - The file that contains Accuracy, Precision, Recall, and F1-score of the ten trained models and their average scores.
+    - The file that contains Accuracy, Precision, Recall, and F1-score of the ten trained models
+      and their average scores.
     - The ten trained models
 
 
@@ -52,14 +54,17 @@ To use this script, you need to extract images for the obfuscated and the non_ob
 
 ### INPUTs are: 
 
-    - The path to the directory that contains the extracted images. In this directory, you need to have three folders: malware, goodware, and obf. 
+    - The path to the directory that contains the extracted images. 
+      In this directory, you need to have three folders: malware, goodware, and obf. 
       "malware" and "goodware" folders contain the images of the non_obfuscated apps.
       The "obf" contain also "malware" and "goodware" folders but for the obfuscated apps
     - The name of directory where to save your model.
     - The name of the file where to save the evaluation results.
     - The key-word about the obfuscated experiment to conduct. 
-      - obf1 to evaluate DexRay on obfuscated apps that it has seen their non-obfuscated version in the training datase; 
-      - obf2 to evaluate DexRay on obfuscated apps that it has NOT seen their non-obfuscated version in the training dataset; 
+      - obf1 to evaluate DexRay on obfuscated apps that it has seen their non-obfuscated
+        version in the training datase; 
+      - obf2 to evaluate DexRay on obfuscated apps that it has NOT seen their non-obfuscated
+        version in the training dataset; 
       - obf3 to augment the training dataset with 25% of obf images;  
       - obf4 to augment the training dataset with 50% of obf images; 
       - obf5 to augment the training dataset with 75% of obf images; 
@@ -67,7 +72,8 @@ To use this script, you need to extract images for the obfuscated and the non_ob
 
     
 ### OUTPUTs are:
-    - The file that contains Accuracy, Precision, Recall, and F1-score of the ten trained models and their average scores.
+    - The file that contains Accuracy, Precision, Recall, and F1-score of the ten trained models 
+      and their average scores.
     - The ten trained models
     - The checkpoint files of the training process
 
