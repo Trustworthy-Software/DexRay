@@ -26,7 +26,7 @@ Example:
 
 ```sh launch_obfuscation.sh PATH_TO_APK PATH_OF_NEW_APK```
 
-## To train and test the model, use ``DexRay_evaluation.py`` script:
+## To train and test the model, use ``DexRay.py`` script:
 This script trains the Neural Network using the training images, and evaluates its learning using the test dataset.
 The evaluation is repeated 10 times using the holdout technique.
 The training, validation and test hashes are provided in `data_splits` directory.
@@ -47,13 +47,13 @@ To use this script, you need to extract the images for goodware and malware appl
 
 Example: 
 
-```python3 DexRay_evaluation.py -p "dataset_images" -d "results_dir" -f "results_dir/evaluation_scores.txt"```
+```python3 DexRay.py -p "dataset_images" -d "results_dir" -f "results_dir/scores.txt"```
 
 
-## To train and test the model on the obfuscated apps, use ``DexRay_evaluation_obfuscation.py`` script:
+## To train and test the model on the obfuscated apps, use ``DexRay_obfuscation.py`` script:
 This script trains the Neural Network using the training images, and evaluates its learning using the test dataset as described in Section4.2 of the paper.
 The evaluation is repeated 10 times using the holdout technique.
-The training, validation and test hashes are provided in `data_splits/obfuscation_evaluation` directory.
+The training, validation and test hashes are provided in `data_splits/obfuscation` directory.
 To use this script, you need to extract images for the obfuscated and the non_obfuscated goodware and malware applications in `goodware_hashes.txt` and `malware_hashes.txt` using the `apktoimage.py` and `launch_obfuscation.sh` scripts.
 
 ### INPUTs are: 
@@ -83,4 +83,4 @@ To use this script, you need to extract images for the obfuscated and the non_ob
 
 Example: 
 
-```python3 DexRay_evaluation_obfuscation.py -p "dataset_images" -d "results_dir_obf" -f "results_dir/evaluation_scores_obf.txt" -obf "obf1"```
+```python3 DexRay_obfuscation.py -p "dataset_images" -d "results_dir_obf" -f "results_dir/scores_obf.txt" -obf "obf1"```
