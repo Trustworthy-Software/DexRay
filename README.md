@@ -1,4 +1,4 @@
-# DexRay:
+# DexRay is an Image-based Android malware detector.
 
 ## To generate the images, use ``apktoimage.py`` script:
 This script generates an image from the given APK based on the Dalvik bytecode.
