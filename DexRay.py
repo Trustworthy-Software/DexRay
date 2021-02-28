@@ -53,7 +53,6 @@ def get_label(file_path):
 def decode_img(img):
     img = tf.image.decode_png(img, channels=CHANNELS)
     img = tf.image.convert_image_dtype(img, tf.float32)
-    img = tf.image.resize(img, [IMG_WIDTH, IMG_HEIGHT])
     return tf.reshape(img, [IMG_WIDTH, IMG_HEIGHT])
 
 def process_path(file_path):
