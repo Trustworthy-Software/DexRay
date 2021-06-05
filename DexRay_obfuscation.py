@@ -85,7 +85,7 @@ if obfuscation_exp in ["obf3", "obf4", "obf5", "obf6"]:
 
 
 model_architecture = Sequential()           
-model_architecture.add(Conv1D(filters=64, kernel_size=12, activation='relu', input_shape=(IMG_WIDTH,IMG_HEIGHT)))
+model_architecture.add(Conv1D(filters=64, kernel_size=12, activation='relu', input_shape=(IMG_WIDTH*IMG_HEIGHT, 1)))
 model_architecture.add(MaxPooling1D(pool_size=12))           
 model_architecture.add(Conv1D(filters=128, kernel_size=12, activation='relu')) 
 model_architecture.add(MaxPooling1D(pool_size=12))                     
