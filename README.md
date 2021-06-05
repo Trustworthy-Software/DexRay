@@ -15,7 +15,7 @@ Example:
 
 ## Images availability
 
-Note that due to the large size of the images dataset, we share it upon request.
+Due to the large size of the images dataset, we share it upon request.
 
 ## To generate an obfuscated APK, use ``launch_obfuscation.sh`` script in Obfuscation/ folder:
 This script generates an obfuscated APK from the given APK based on options given in the script.
