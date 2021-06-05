@@ -15,7 +15,7 @@ Example:
 
 ## Images availability
 
-Note that we provide the dataset used in our paper as a download link in this repository called: IMAGES_LINK
+Note that due to the large size of the images dataset, we share it upon request.
 
 ## To generate an obfuscated APK, use ``launch_obfuscation.sh`` script in Obfuscation/ folder:
 This script generates an obfuscated APK from the given APK based on options given in the script.

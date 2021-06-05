@@ -42,9 +42,9 @@ if obfuscation_exp not in ["obf1", "obf2", "obf3", "obf4", "obf5", "obf6"]:
 
 
 CHANNELS = 1
-EPOCHS = 100
+EPOCHS = 200
 BATCH_SIZE = 500
-IMG_WIDTH = IMG_HEIGHT = 256
+IMG_SIZE = 128
 PATH_FILES = "data_splits/obfuscation"
 
 CLASS_NAMES = ['goodware', 'malware']
@@ -57,30 +57,40 @@ def get_label(file_path):
         return [1]
 
 
-def decode_img(img):
-    img = tf.image.decode_png(img, channels=CHANNELS)
-    img = tf.image.convert_image_dtype(img, tf.float32)
-    return tf.reshape(img, [IMG_WIDTH, IMG_HEIGHT])
+def get_image(path_img):
+    image = np.asarray(Image.open(path_img))
+    image = tf.convert_to_tensor(image, dtype_hint=None, name=None)
+    return image
+
+def get_shape(image):
+    return image.shape[0]
+
+def decode_img(path_img):
+    image = tf.numpy_function(get_image, [path_img], tf.uint8)
+    shape = tf.numpy_function(get_shape, [image], tf.int64)
+    image = tf.reshape(image, [shape, 1, 1])
+    image = tf.image.convert_image_dtype(image, tf.float32)
+    image = tf.image.resize(image, [IMG_SIZE*IMG_SIZE, 1])
+    return tf.reshape(image, [IMG_SIZE*IMG_SIZE, 1])
 
 def process_path(file_path):
     label = get_label(file_path)
-    img = tf.io.read_file(file_path)
-    img = decode_img(img)
-    return img, label
-    
+    img = decode_img(file_path)
+    return img, label   
+ 
 recall_list, precision_list, accuracy_list, f1_list = [], [], [], []
 
 if obfuscation_exp in ["obf3", "obf4", "obf5", "obf6"]:
     recall_list2, precision_list2, accuracy_list2, f1_list2 = [], [], [], []
 
-es_callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=10, restore_best_weights=True)
 
 model_architecture = Sequential()           
-model_architecture.add(Conv1D(filters=64, kernel_size=8, activation='relu', input_shape=(IMG_WIDTH,IMG_HEIGHT)))
-model_architecture.add(MaxPooling1D(pool_size=2))           
-model_architecture.add(Conv1D(filters=128, kernel_size=8, activation='relu')) 
-model_architecture.add(MaxPooling1D(pool_size=2))                     
+model_architecture.add(Conv1D(filters=64, kernel_size=12, activation='relu', input_shape=(IMG_WIDTH,IMG_HEIGHT)))
+model_architecture.add(MaxPooling1D(pool_size=12))           
+model_architecture.add(Conv1D(filters=128, kernel_size=12, activation='relu')) 
+model_architecture.add(MaxPooling1D(pool_size=12))                     
 model_architecture.add(Flatten())
+model_architecture.add(Dense(64, activation='sigmoid'))
 model_architecture.add(Dense(1, activation='sigmoid'))
 
 
@@ -170,7 +180,7 @@ for i in range(1, 11):
                            tf.keras.metrics.Recall(),
                            tfa.metrics.F1Score(num_classes=2, average="micro", threshold=0.5)])
                            
-    es_callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=10, restore_best_weights=True)
+    es_callback = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=50, restore_best_weights=True)
     cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=os.path.join(dir_name, 'cp'+str(i)), 
                                                      save_weights_only=True,
                                                      monitor='val_accuracy', 
