@@ -14,12 +14,9 @@ def generate_png(apk: APK, filename: str, folder: str):
     for s in get_dex_bytes(apk):
         stream += s
     current_len = len(stream)
-    sqrt = math.ceil(math.sqrt(current_len))
-    sq = math.pow(sqrt, 2)
-    while len(stream) != sq:
-        stream += b"\x00"
-    image = Image.frombytes(mode='L', size=(sqrt, sqrt), data=stream)
+    image = Image.frombytes(mode='L', size=(1, current_len), data=stream)
     image.save(f"{folder}/{filename}.png")
+    
 
 
 if __name__ == "__main__":
