@@ -22,9 +22,9 @@ This script generates an obfuscated APK from the given APK based on options give
 
 ### INPUTs are: 
     - The APK to obfuscate
-    - The path in which the resulting APK will be
+    - The path for saving the resulting APK
 ### OUTPUTs are:
-    - An obfuscated APK based one the input APK
+    - An obfuscated APK based on the input APK
 
 Example: 
 
@@ -55,7 +55,7 @@ Example:
 
 
 ## To train and test the model on the obfuscated apps, use ``DexRay_obfuscation.py`` script:
-This script trains the Neural Network using the training images, and evaluates its learning using the test dataset as described in Section4.2 of the paper.
+This script trains the Neural Network using the training images, and evaluates its learning using the test dataset as described in Section4.4 of the paper.
 The evaluation is repeated 10 times using the holdout technique.
 The training, validation and test hashes are provided in `data_splits/obfuscation` directory.
 To use this script, you need to extract images for the obfuscated and the non_obfuscated goodware and malware applications in `goodware_hashes.txt` and `malware_hashes.txt` using the `apktoimage.py` and `launch_obfuscation.sh` scripts.
@@ -66,7 +66,7 @@ To use this script, you need to extract images for the obfuscated and the non_ob
       In this directory, you need to have three folders: malware, goodware, and obf. 
       "malware" and "goodware" folders contain the images of the non_obfuscated apps.
       The "obf" contain also "malware" and "goodware" folders but for the obfuscated apps
-    - The name of directory where to save your model.
+    - The name of the directory where to save your model.
     - The name of the file where to save the evaluation results.
     - The key-word about the obfuscated experiment to conduct. 
       - obf1 to evaluate DexRay on obfuscated apps that it has seen their non-obfuscated
