@@ -70,10 +70,13 @@ def necessity(path_dict_necessity):
     cbar.set_ticks([0, 1])
     cbar.set_ticklabels([])
 
-    labels = ['The necessity is high', 'The necessity is low']
-    for j, lab in enumerate(['$0$% of goodware are detected','$100$% of goodware are detected']):
-        cbar.ax.text((2 * j ) / 2.0, -.7, lab, ha='center', va='center', fontsize=12)
-        cbar.ax.text((2 * j ) / 2.0, -1.7, labels[j], ha='center', va='center', fontsize=12)
+    necessities = ['The necessity is high', 'The necessity is low']
+    my_labels = ['$0$% of goodware are detected','$100$% of goodware are detected']
+    
+    cbar.ax.text(0, -0.7, my_labels[0], va='center', fontsize=14)
+    cbar.ax.text(0, -1.7, necessities[0], va='center', fontsize=14)
+    cbar.ax.text(1, -0.7, my_labels[1], ha="right", va='center', fontsize=14)
+    cbar.ax.text(1, -1.7, necessities[1], ha="right", va='center', fontsize=14)
 
     fig.tight_layout()
     plt.show()
@@ -134,10 +137,14 @@ def sufficiency(path_dict_sufficiency):
     cbar.set_ticklabels([])
 
 
-    labels = ['The sufficiency is low', 'The sufficiency is high']
-    for j, lab in enumerate(['$0$% of goodware are detected','$100$% of goodware are detected']):
-        cbar.ax.text((2 * j ) / 2.0, -.7, lab, ha='center', va='center', fontsize=12)
-        cbar.ax.text((2 * j ) / 2.0, -1.7, labels[j], ha='center', va='center', fontsize=12)
+    sufficiencies = ['The sufficiency is low', 'The sufficiency is high']
+    my_labels = ['$0$% of goodware are detected','$100$% of goodware are detected']
+
+    cbar.ax.text(0, -0.7, my_labels[0], va='center', fontsize=14)
+    cbar.ax.text(0, -1.7, sufficiencies[0], va='center', fontsize=14)
+    cbar.ax.text(1, -0.7, my_labels[1], ha="right", va='center', fontsize=14)
+    cbar.ax.text(1, -1.7, sufficiencies[1], ha="right", va='center', fontsize=14)
+
 
 
     fig.tight_layout()
