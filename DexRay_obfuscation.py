@@ -131,7 +131,7 @@ def main(path_images, dir_name, file_name, obfuscation_exp, CHANNELS, EPOCHS, BA
   
           with open(os.path.join(PATH_FILES, "augm_obf_test"+str(i)+".txt")) as f:
               test_hashes2 = f.read().splitlines()
-              test_imgs2 = [os.path.join(path_images2, image_hash) for image_hash in test_hashes2]
+              test_imgs2 = [os.path.join(path_images, image_hash) for image_hash in test_hashes2]
           f.close()
           
           test_dataset2 = tf.data.Dataset.from_tensor_slices(test_imgs2)
