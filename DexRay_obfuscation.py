@@ -25,7 +25,7 @@ import argparse
 
 def parseargs():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--path", help="The path to the directory that contains 3 folders: malware, goodware, and obf folders. malware and goodware folders contain the non_obfuscated images, and "obf" folder contains malware and goodware folders of the obfuscated images", type=str, required=True)
+    parser.add_argument("-p", "--path", help="The path to the directory that contains 3 folders: malware, goodware, and obf folders. malware and goodware folders contain the non_obfuscated images, and 'obf' folder contains malware and goodware folders of the obfuscated images", type=str, required=True)
     parser.add_argument("-d", "--dir", help="The name of the directory where to save the model", type=str, required=True)
     parser.add_argument("-f", "--file", help="The name of the file where to save the results of the evaluation", type=str, required=True)
     parser.add_argument("-obf", "--obfuscation", default="obf1", help="The obfuscation experiment to perform: obf1 to evaluate DexRay on obfuscated apps that it has seen their non-obfuscated version in the training datase; obf2 to evaluate DexRay on obfuscated apps that it has NOT seen their non-obfuscated version in the training dataset; obf3 to augment the training dataset with 25% of obf images;  obf4 to augment the training dataset with 50% of obf images; obf5 to augment the training dataset with 75% of obf images; obf6 to augment the training dataset with 100% of obf images;", type=str, required=True)
@@ -131,7 +131,7 @@ def main(path_images, dir_name, file_name, obfuscation_exp, CHANNELS, EPOCHS, BA
   
           with open(os.path.join(PATH_FILES, "augm_obf_test"+str(i)+".txt")) as f:
               test_hashes2 = f.read().splitlines()
-              test_imgs2 = [os.path.join(path_images2, image_hash) for image_hash in test_hashes2]
+              test_imgs2 = [os.path.join(path_images, image_hash) for image_hash in test_hashes2]
           f.close()
           
           test_dataset2 = tf.data.Dataset.from_tensor_slices(test_imgs2)
