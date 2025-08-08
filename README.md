@@ -11,7 +11,7 @@ This script generates an image from the given APK based on the Dalvik bytecode.
 
 ### INPUTs are: 
     - The APK to convert into image
-    - The path in which the resulting image will be
+    - The path where the resulting image will be saved
 ### OUTPUTs are:
     - A greyscale image representing the Dalvik bytecode
 
